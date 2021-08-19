@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.example.android.navigation.databinding.FragmentTitleBinding
 
 class TitleFragment : Fragment() {
@@ -15,7 +16,10 @@ class TitleFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var binding = DataBindingUtil.inflate<ViewDataBinding>(inflater, R.layout.fragment_title,container,false)
+        val binding = FragmentTitleBinding.inflate(inflater)
+        binding.playButton.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_titleFragment2_to_gameFragment)
+        }
         return binding.root
     }
 }
